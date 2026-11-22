@@ -37,7 +37,9 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function appPage(request) {
   const cache = await caches.open(VERSION);
   const saved = (await cache.match('./index.html')) || (await cache.match('./'));
-  const fresh = fetch(request)
+  // 'no-cache': se pregunta siempre al servidor si hay versión nueva, sin fiarse de la copia
+  // que el navegador guarda por su cuenta (el servidor le deja guardarla unos minutos).
+  const fresh = fetch(request, { cache: 'no-cache' })
     .then((res) => {
       if (res.ok && res.type === 'basic') cache.put('./index.html', res.clone()).catch(() => {});
       return res;
