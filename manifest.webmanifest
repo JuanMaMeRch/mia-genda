@@ -1,0 +1,25 @@
+{
+  "name": "Mia Genda",
+  "short_name": "Mia Genda",
+  "description": "Tu agenda personal: eventos, trabajos y notas, en el móvil y en el ordenador.",
+  "lang": "es",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eef2f9",
+  "theme_color": "#eef2f9",
+  "categories": ["productivity"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Hoy", "url": "./#hoy", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Calendario", "url": "./#calendario", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Tableros", "url": "./#tableros", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Notas", "url": "./#notas", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] }
+  ]
+}
