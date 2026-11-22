@@ -55,6 +55,8 @@ async function appPage(request) {
 async function staticFile(request) {
   const cache = await caches.open(VERSION);
   const saved = await cache.match(request);
+  // Las fotos del cielo no cambian: si ya está guardada, no hace falta volver a pedirla.
+  if (saved && request.url.includes('/fondos/')) return saved;
   const fresh = fetch(request)
     .then((res) => {
       if (res.ok && res.type === 'basic') cache.put(request, res.clone()).catch(() => {});
