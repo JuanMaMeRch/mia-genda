@@ -72,7 +72,7 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return; // la nube y lo demás: directo a Internet
   if (!url.pathname.startsWith(new URL(self.registration.scope).pathname)) return;
-  if (url.pathname.includes('/ayudante/') || url.pathname.endsWith('/sw.js')) return;
+  if (url.pathname.includes('/ayudante/') || url.pathname.includes('/pro/') || url.pathname.endsWith('/sw.js')) return; // /pro/: la página de descargas de Mia Genda Pro
   const isPage = request.mode === 'navigate' || url.pathname.endsWith('/') || url.pathname.endsWith('/index.html');
   event.respondWith(isPage ? appPage(request) : staticFile(request));
 });

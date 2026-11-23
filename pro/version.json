@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "fecha": "2026-11-23",
+  "novedades": [
+    "Primera versión de Mia Genda Pro."
+  ],
+  "pagina": "https://juanmamerch.github.io/mia-genda/pro/",
+  "windows": {
+    "url": "https://github.com/JuanMaMeRch/mia-genda/releases/download/pro-v1.0.0/Instalar-Mia-Genda-Pro.exe",
+    "sha256": "ae41ec1e987e7f560edf68839edead07e1891f2169f437e22ff5676603af592c",
+    "bytes": 113306876
+  },
+  "mac_arm64": {
+    "url": "https://github.com/JuanMaMeRch/mia-genda/releases/download/pro-v1.0.0/Mia-Genda-Pro-Mac-chip-Apple.zip",
+    "sha256": "7b575cecf2c1a222bbc01b99f3565760e5e5abc9159ae0d0d1f713ef9a770e57",
+    "bytes": 120394038
+  },
+  "mac_x64": {
+    "url": "https://github.com/JuanMaMeRch/mia-genda/releases/download/pro-v1.0.0/Mia-Genda-Pro-Mac-Intel.zip",
+    "sha256": "856035f86568a6301f284e792a876ed43a6a1669c17ea4e99f231807dfda104b",
+    "bytes": 124444731
+  }
+}
