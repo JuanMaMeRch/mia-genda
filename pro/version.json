@@ -1,23 +1,25 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "fecha": "2026-11-23",
   "novedades": [
-    "Primera versión de Mia Genda Pro."
+    "Socios de AIAO: tu agenda también en el móvil y la tablet, desde cualquier sitio y cifrada.",
+    "Nuevo apartado «Tu agenda en el móvil» en «Este ordenador», con código QR para conectar el móvil.",
+    "Mejoras y arreglos."
   ],
   "pagina": "https://juanmamerch.github.io/mia-genda/pro/",
   "windows": {
-    "url": "https://github.com/JuanMaMeRch/mia-genda/releases/download/pro-v1.0.0/Instalar-Mia-Genda-Pro.exe",
-    "sha256": "ae41ec1e987e7f560edf68839edead07e1891f2169f437e22ff5676603af592c",
-    "bytes": 113306876
+    "url": "https://github.com/JuanMaMeRch/mia-genda/releases/download/pro-v1.1.0/Instalar-Mia-Genda-Pro.exe",
+    "sha256": "cf311fe9a8da72905b805303433f35c47719b1dc1b0a4892a8e20c0a2745c573",
+    "bytes": 113297630
   },
   "mac_arm64": {
-    "url": "https://github.com/JuanMaMeRch/mia-genda/releases/download/pro-v1.0.0/Mia-Genda-Pro-Mac-chip-Apple.zip",
-    "sha256": "7b575cecf2c1a222bbc01b99f3565760e5e5abc9159ae0d0d1f713ef9a770e57",
-    "bytes": 120394038
+    "url": "https://github.com/JuanMaMeRch/mia-genda/releases/download/pro-v1.1.0/Mia-Genda-Pro-Mac-chip-Apple.zip",
+    "sha256": "b62373c0303f6b08540530f7e1b593d906b17e349d55d3c1e0b11ca6855ec2a2",
+    "bytes": 120404032
   },
   "mac_x64": {
-    "url": "https://github.com/JuanMaMeRch/mia-genda/releases/download/pro-v1.0.0/Mia-Genda-Pro-Mac-Intel.zip",
-    "sha256": "856035f86568a6301f284e792a876ed43a6a1669c17ea4e99f231807dfda104b",
-    "bytes": 124444731
+    "url": "https://github.com/JuanMaMeRch/mia-genda/releases/download/pro-v1.1.0/Mia-Genda-Pro-Mac-Intel.zip",
+    "sha256": "6a02e65c55012ae2d0717e50a122e51a18defa57a22bd5b963cd2796cf0d3450",
+    "bytes": 124454725
   }
 }

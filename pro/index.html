@@ -417,6 +417,89 @@
         margin-bottom: 4px;
       }
 
+      /* ---------- Socios de AIAO: también en el móvil ---------- */
+      .socios {
+        background: #e4f3ea;
+        border-bottom: 1px solid #cae6d5;
+        overflow: hidden;
+      }
+      .socios-rejilla {
+        display: grid;
+        grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+        gap: clamp(40px, 6vw, 88px);
+        align-items: center;
+      }
+      .socios .intro {
+        max-width: 52ch;
+      }
+      .socios .pasos li {
+        margin-top: 18px;
+      }
+      .socios-cifrado {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        margin-top: 28px;
+        padding: 16px 18px;
+        border-radius: 14px;
+        background: var(--blanco);
+        color: var(--tinta-2);
+        font-size: 16.5px;
+      }
+      .socios-cifrado svg {
+        flex: none;
+        margin-top: 2px;
+        color: var(--verde-hondo);
+      }
+      .socios-cifrado b {
+        color: var(--tinta);
+      }
+      .socios-accion {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px 24px;
+        margin-top: 30px;
+      }
+      .socios-accion .boton {
+        padding-left: 26px;
+      }
+      .socios-accion p {
+        flex: 1 1 220px;
+        font-size: 15.5px;
+        color: var(--tinta-3);
+      }
+      /* El programa con el código QR y, delante, el móvil con la agenda ya abierta */
+      .socios-figura {
+        position: relative;
+        margin: 0;
+        padding-bottom: 12%;
+      }
+      .socios-figura .tarjeta {
+        display: block;
+        width: 76%;
+        border-radius: 18px;
+        border: 1px solid rgba(20, 22, 28, 0.08);
+        background: var(--blanco);
+        box-shadow: 0 30px 60px -32px rgba(10, 20, 40, 0.42);
+      }
+      .socios-figura .movil {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 46%;
+        padding: 7px;
+        border-radius: 34px;
+        background: #16181d;
+        box-shadow: 0 44px 70px -30px rgba(10, 20, 40, 0.6);
+      }
+      .socios-figura .movil img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 27px;
+      }
+
       /* ---------- Descargar ---------- */
       .descargar {
         position: relative;
@@ -699,6 +782,12 @@
         .fila.al-reves .fila-texto {
           order: 0;
         }
+        .socios-rejilla {
+          grid-template-columns: 1fr;
+        }
+        .socios-figura {
+          max-width: 460px;
+        }
         .cielo-arriba {
           display: block;
         }
@@ -843,9 +932,37 @@
           <h2 id="t-tuya" class="tuya-frase">Tu agenda es tuya: se queda en tu ordenador y nadie más la ve.</h2>
           <div class="tuya-datos">
             <p><b>Sin cuentas</b>No hay que registrarse ni recordar ninguna contraseña. La abres y empiezas.</p>
-            <p><b>Sin nube</b>Tus citas, trabajos y notas no salen de tu ordenador.</p>
-            <p><b>Casi sin internet</b>Solo se conecta para leer los calendarios que tú enlaces y para ver si hay una versión nueva.</p>
+            <p><b>Sin nube</b>Tus citas, trabajos y notas se quedan en tu ordenador. Solo salen si conectas tu móvil como socio de AIAO, y entonces van cifradas.</p>
+            <p><b>Casi sin internet</b>Solo se conecta para leer los calendarios que tú enlaces, para ver si hay una versión nueva y, si lo activas, para llevar tu agenda al móvil.</p>
           </div>
+        </div>
+      </section>
+
+      <section class="seccion socios" id="socios" aria-labelledby="t-socios">
+        <div class="wrap socios-rejilla">
+          <div>
+            <h2 id="t-socios">Socios de AIAO: tu agenda también en el móvil</h2>
+            <p class="intro">Si eres socio de la Asociación de Inteligencia Artificial Online (AIAO), Mia Genda Pro te lleva la agenda al móvil y a la tablet, estés donde estés. Lo que apuntas en el móvil aparece en el ordenador, y al revés.</p>
+            <ol class="pasos">
+              <li>Al hacerte socio recibes tu <b>código personal</b>, que empieza por AIAO-.</li>
+              <li>En Mia Genda Pro, entra en <span class="ui">Este ordenador</span>, pega el código en «Tu agenda en el móvil» y pulsa <span class="ui">Conectar</span>.</li>
+              <li>Pulsa <span class="ui">Añadir un móvil o tablet</span> y apunta con la cámara del móvil al código QR. Tu agenda se abre en el móvil.</li>
+            </ol>
+            <p class="socios-cifrado">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" /><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5v2.5" /></svg>
+              <span><b>Cifrada antes de salir de tu ordenador.</b> En el servidor de AIAO solo se guarda una copia cifrada que nadie puede leer, ni siquiera AIAO. La llave va dentro del código QR y nunca llega al servidor.</span>
+            </p>
+            <div class="socios-accion">
+              <a class="boton" href="https://aiao.es/hazte-socio.html" target="_blank" rel="noopener">Hazte socio de AIAO</a>
+              <p>Funciona en iPhone, Android y tablets, desde el navegador. No hay que instalar nada en el móvil.</p>
+            </div>
+          </div>
+          <figure class="socios-figura">
+            <img class="tarjeta" src="./capturas/socio-pro.webp" alt="En Mia Genda Pro, la tarjeta «Tu agenda en el móvil» del socio Laura Pérez, con un código QR y tres pasos para abrir la agenda en el móvil." width="950" height="1302" loading="lazy" />
+            <div class="movil">
+              <img src="./capturas/socio-movil.webp" alt="La misma agenda abierta en un móvil: la pantalla Hoy con el cielo de la tarde, el dentista a las 17:30 y una cena a las 21:00." width="780" height="1688" loading="lazy" />
+            </div>
+          </figure>
         </div>
       </section>
 
@@ -975,8 +1092,12 @@
               <p>En <span class="ui">Este ordenador</span>, en el apartado de calendarios, pega el enlace privado del calendario (el que termina en .ics). Sus citas aparecen en tu agenda con su color. Se ven aquí, pero se cambian en Google, Outlook o iCloud.</p>
             </details>
             <details>
-              <summary>¿Funciona en el móvil o en otro ordenador a la vez?</summary>
-              <p>Mia Genda Pro es para ordenadores con Windows o Mac, y cada ordenador tiene su propia agenda. No se sincroniza entre aparatos: así nada sale de tu ordenador.</p>
+              <summary>¿Puedo verla en el móvil o en la tablet?</summary>
+              <p>Sí, si eres socio de AIAO: conecta tu móvil o tu tablet desde <span class="ui">Este ordenador</span>, como se explica en <a href="#socios">Socios de AIAO</a>. Si no eres socio, Mia Genda Pro funciona en el ordenador donde la instalas y cada ordenador tiene su propia agenda.</p>
+            </details>
+            <details>
+              <summary>Soy socio, ¿qué pasa si cambio de ordenador?</summary>
+              <p>La primera vez que conectas, Mia Genda Pro te enseña una <b>clave de recuperación</b>. Guárdala en un sitio seguro, por ejemplo en tu gestor de contraseñas. En el ordenador nuevo, conecta con tu código de socio y escribe esa clave: recuperas tu agenda tal como estaba. Sin la clave nadie puede abrir la copia del servidor, tampoco AIAO.</p>
             </details>
             <details>
               <summary>¿Por qué Windows o el Mac dicen que no reconocen el programa?</summary>
