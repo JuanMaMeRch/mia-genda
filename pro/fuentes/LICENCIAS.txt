@@ -1,0 +1,6 @@
+Tipografías incluidas en la app (se pueden usar y redistribuir libremente):
+
+  gabarito.woff2   Gabarito, de Naipe Foundry. Licencia SIL Open Font License 1.1.
+  atkinson.woff2   Atkinson Hyperlegible Next, del Braille Institute. Licencia SIL Open Font License 1.1.
+
+Texto de la licencia: https://openfontlicense.org

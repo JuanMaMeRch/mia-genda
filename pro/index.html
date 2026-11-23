@@ -3,278 +3,1166 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Descargar Mia Genda Pro</title>
-    <meta name="description" content="Mia Genda Pro: tu agenda personal en tu ordenador. Eventos, trabajos al estilo Trello, notas y avisos. Para Windows y Mac." />
+    <title>Mia Genda Pro: tu agenda personal en tu ordenador</title>
+    <meta name="description" content="Citas, trabajos en tableros, notas de colores y avisos, todo en tu ordenador y sin cuentas. Descarga Mia Genda Pro para Windows o Mac." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mia Genda Pro: tu agenda personal en tu ordenador" />
+    <meta property="og:description" content="Citas, trabajos en tableros, notas de colores y avisos. Sin cuentas: todo se guarda en tu ordenador. Para Windows y Mac." />
+    <meta property="og:image" content="https://juanmamerch.github.io/mia-genda/pro/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://juanmamerch.github.io/mia-genda/pro/" />
+    <meta name="theme-color" content="#07182b" />
     <link rel="icon" href="./icono-pro.png" type="image/png" />
+    <link rel="preload" href="./fuentes/gabarito.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fuentes/atkinson.woff2" as="font" type="font/woff2" crossorigin />
     <style>
+      @font-face {
+        font-family: 'Gabarito';
+        font-style: normal;
+        font-display: swap;
+        font-weight: 400 900;
+        src: url('./fuentes/gabarito.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Atkinson Next';
+        font-style: normal;
+        font-display: swap;
+        font-weight: 200 800;
+        src: url('./fuentes/atkinson.woff2') format('woff2');
+      }
+
+      /* Los colores de la propia app */
       :root {
-        --bg: #f3f4f6;
-        --ink: #1c1d22;
-        --ink-2: #4a4d57;
-        --ink-3: #7b7f8a;
-        --line: #e3e4e8;
-        --card: #ffffff;
-        --green: #a6e3bc;
-        --green-ink: #103a24;
-        --green-deep: #1f7f49;
-        --sun: #ffd23f;
+        --papel: #f3f4f6;
+        --blanco: #ffffff;
+        --tinta: #1c1d22;
+        --tinta-2: #4a4d57;
+        --tinta-3: #5f6370;
+        --linea: #e1e3e8;
+        --verde: #a6e3bc;
+        --verde-hover: #8fd8a9;
+        --verde-tinta: #103a24;
+        --verde-hondo: #1f7f49;
+        --noche: #07182b;
+        --noche-2: #0e2440;
+        --noche-3: #1a385e;
+        --noche-tinta: #eaf3ff;
+        --limon: #ffd23f;
+        --display: 'Gabarito', 'Atkinson Next', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        --texto: 'Atkinson Next', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        --ancho: 1140px;
+        --lado: clamp(20px, 5vw, 48px);
         color-scheme: light;
       }
       * {
         box-sizing: border-box;
       }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         margin: 0;
-        background: var(--bg);
-        color: var(--ink);
-        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        font-size: 17px;
-        line-height: 1.55;
+        background: var(--papel);
+        color: var(--tinta);
+        font-family: var(--texto);
+        font-size: 18px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
       }
-      main {
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 40px 22px 60px;
-      }
-      header {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-      }
-      header img {
-        width: 72px;
-        height: 72px;
-        border-radius: 18px;
-        box-shadow: 0 6px 18px rgba(20, 22, 28, 0.16);
-      }
-      h1 {
-        margin: 0;
-        font-size: clamp(30px, 5vw, 44px);
-        line-height: 1.05;
-        letter-spacing: -0.02em;
-      }
-      .ver {
-        color: var(--ink-3);
-        font-size: 15px;
-        margin-top: 4px;
-      }
-      .lead {
-        font-size: 20px;
-        color: var(--ink-2);
-        max-width: 60ch;
-        margin: 22px 0 26px;
-      }
-      .downloads {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 14px;
-      }
-      .dl {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        padding: 18px 20px;
-        border-radius: 18px;
-        background: var(--card);
-        color: var(--ink);
-        text-decoration: none;
-        box-shadow:
-          0 1px 2px rgba(20, 22, 28, 0.06),
-          0 2px 10px rgba(20, 22, 28, 0.05);
-        border: 2px solid transparent;
-        transition:
-          transform 0.12s,
-          border-color 0.12s;
-      }
-      .dl:hover {
-        transform: translateY(-2px);
-        border-color: var(--green-deep);
-      }
-      .dl b {
-        font-size: 19px;
-      }
-      .dl small {
-        color: var(--ink-3);
-        font-size: 14px;
-      }
-      .dl .btn {
-        align-self: flex-start;
-        margin-top: 10px;
-        padding: 9px 16px;
-        border-radius: 12px;
-        background: var(--green);
-        color: var(--green-ink);
-        font-weight: 700;
-      }
-      .dl.mine {
-        border-color: var(--green-deep);
-      }
-      .dl.mine::before {
-        content: 'Para tu ordenador';
-        align-self: flex-start;
-        font-size: 12.5px;
-        font-weight: 700;
-        padding: 2px 9px;
-        border-radius: 8px;
-        background: #fff4c2;
-        color: #5a4500;
-        margin-bottom: 6px;
-      }
-      .shot {
-        display: block;
-        width: 100%;
+      img {
+        max-width: 100%;
         height: auto;
-        margin: 34px 0 10px;
-        border-radius: 16px;
-        box-shadow: 0 20px 50px rgba(20, 22, 28, 0.18);
       }
-      .facts {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 6px 26px;
-        margin: 26px 0 8px;
-        padding: 0;
-        list-style: none;
-        color: var(--ink-2);
+      a {
+        color: var(--verde-hondo);
+        text-underline-offset: 3px;
       }
-      .facts li::before {
-        content: '✓ ';
-        color: var(--green-deep);
-        font-weight: 800;
+      a:hover {
+        text-decoration-thickness: 2px;
+      }
+      :focus-visible {
+        outline: 3px solid var(--limon);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--display);
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        margin: 0;
       }
       h2 {
-        margin: 38px 0 10px;
-        font-size: 24px;
+        font-size: clamp(30px, 3.6vw, 44px);
+        line-height: 1.1;
       }
-      details {
-        background: var(--card);
+      h3 {
+        font-size: clamp(23px, 2.2vw, 28px);
+        line-height: 1.2;
+      }
+      p {
+        margin: 0;
+      }
+      .wrap {
+        max-width: var(--ancho);
+        margin: 0 auto;
+        padding: 0 var(--lado);
+      }
+      .intro {
+        max-width: 62ch;
+        color: var(--tinta-2);
+        font-size: 19px;
+        margin-top: 16px;
+      }
+      .skip {
+        position: absolute;
+        left: -999px;
+      }
+      .skip:focus {
+        left: 12px;
+        top: 12px;
+        z-index: 10;
+        background: var(--blanco);
+        padding: 8px 12px;
+      }
+
+      /* Lo que se ve de la app escrito en el texto: «Más información», «Instalar»… */
+      .ui {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 0.9em;
+        line-height: 1.3;
+        padding: 1px 8px 2px;
+        border: 1px solid #cfd2d9;
+        border-bottom-width: 2px;
+        border-radius: 7px;
+        background: var(--blanco);
+        color: var(--tinta);
+        white-space: nowrap;
+      }
+      kbd {
+        font-family: var(--texto);
+        font-weight: 700;
+        font-size: 0.85em;
+        padding: 1px 7px 2px;
+        border: 1px solid #cfd2d9;
+        border-bottom-width: 3px;
+        border-radius: 7px;
+        background: var(--blanco);
+        white-space: nowrap;
+      }
+
+      /* ---------- Portada: el cielo de esta hora ---------- */
+      .cielo {
+        position: relative;
+        min-height: clamp(620px, 92vh, 900px);
+        background: #24456f;
+        color: #fff;
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .cielo-foto {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 114%;
+        object-fit: cover;
+        object-position: 50% 100%;
+        z-index: -2;
+        opacity: 0;
+        transition: opacity 0.9s ease;
+      }
+      .cielo-foto.lista {
+        opacity: 1;
+      }
+      .cielo::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(180deg, rgba(4, 12, 28, 0.62) 0%, rgba(4, 12, 28, 0.38) 38%, rgba(4, 12, 28, 0) 64%);
+      }
+      .cielo-arriba {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 24px;
+        padding-top: 26px;
+      }
+      .marca {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: none;
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 22px;
+        color: #fff;
+        text-decoration: none;
+        width: fit-content;
+      }
+      .marca img {
+        width: 44px;
+        height: 44px;
+        border-radius: 11px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      }
+      .marca span {
+        font-size: 13px;
+        font-weight: 800;
+        color: #3d2f00;
+        background: var(--limon);
+        border-radius: 7px;
+        padding: 1px 8px 2px;
+      }
+      .cielo-texto {
+        padding-top: clamp(36px, 7vh, 80px);
+        max-width: 760px;
+      }
+      .cielo h1 {
+        font-size: clamp(42px, 6.4vw, 78px);
+        line-height: 1.02;
+        letter-spacing: -0.025em;
+        text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+      }
+      .cielo .entrada {
+        font-size: clamp(19px, 1.9vw, 22px);
+        line-height: 1.5;
+        max-width: 54ch;
+        margin-top: 20px;
+        color: rgba(255, 255, 255, 0.94);
+        text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+      }
+      .accion {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        margin-top: 32px;
+      }
+      .boton {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.1;
+        padding: 16px 26px 17px 22px;
         border-radius: 14px;
-        padding: 14px 18px;
-        margin: 10px 0;
-        box-shadow: 0 1px 2px rgba(20, 22, 28, 0.06);
-      }
-      summary {
+        background: var(--verde);
+        color: var(--verde-tinta);
+        text-decoration: none;
+        border: 0;
         cursor: pointer;
+        transition: background-color 0.15s;
+      }
+      .boton:hover {
+        background: var(--verde-hover);
+        text-decoration: none;
+      }
+      .boton svg {
+        flex: none;
+      }
+      .cielo .boton {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+      /* Cristal oscuro, como la cabecera de los tableros: se lee sobre la nieve y sobre el cielo */
+      .accion-dato,
+      .cielo-nota {
+        background: rgba(4, 14, 32, 0.5);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border-radius: 11px;
+        color: #fff;
+      }
+      .accion-dato {
+        max-width: 62ch;
+        padding: 9px 14px 10px;
+        font-size: 15.5px;
+        line-height: 1.5;
+      }
+      .otras {
+        color: #fff;
         font-weight: 700;
       }
-      details ol {
-        padding-left: 22px;
-        color: var(--ink-2);
-      }
-      code {
-        font-family: ui-monospace, 'Cascadia Mono', Menlo, Consolas, monospace;
-        background: #eeeff2;
-        padding: 2px 6px;
-        border-radius: 6px;
-        font-size: 14.5px;
-        word-break: break-all;
-      }
-      footer {
-        margin-top: 40px;
-        color: var(--ink-3);
+      .cielo-nota {
+        max-width: 36ch;
+        padding: 9px 13px 10px;
         font-size: 14px;
+        line-height: 1.45;
+        background: rgba(4, 14, 32, 0.32);
+      }
+
+      /* La pantalla de la app, montada sobre el borde del cielo */
+      .pantalla {
+        position: relative;
+        z-index: 2;
+        margin-top: clamp(-150px, -10vw, -60px);
+      }
+      .pantalla img,
+      .fila img {
+        display: block;
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid rgba(20, 22, 28, 0.1);
+        background: var(--blanco);
+      }
+      .pantalla img {
+        box-shadow:
+          0 2px 6px rgba(10, 20, 40, 0.12),
+          0 40px 80px -30px rgba(10, 20, 40, 0.45);
+      }
+      .pantalla-pie {
+        margin-top: 14px;
+        font-size: 15px;
+        color: var(--tinta-3);
+      }
+
+      /* ---------- Qué puedes hacer ---------- */
+      .seccion {
+        padding: clamp(72px, 10vw, 128px) 0;
+      }
+      .fila {
+        display: grid;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        gap: clamp(28px, 5vw, 72px);
+        align-items: center;
+        margin-top: clamp(56px, 8vw, 104px);
+      }
+      .fila.al-reves {
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      }
+      .fila.al-reves .fila-texto {
+        order: 2;
+      }
+      .fila img {
+        box-shadow: 0 30px 60px -32px rgba(10, 20, 40, 0.42);
+      }
+      .fila-texto p {
+        color: var(--tinta-2);
+        margin-top: 14px;
+      }
+      .fila-texto ul {
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+        color: var(--tinta-2);
+      }
+      .fila-texto li {
+        position: relative;
+        padding-left: 22px;
+        margin-top: 6px;
+      }
+      .fila-texto li::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 0.62em;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--verde);
+        box-shadow: inset 0 0 0 2px var(--verde-hondo);
+      }
+      .ademas {
+        margin-top: clamp(64px, 8vw, 104px);
+        padding-top: 36px;
+        border-top: 1px solid var(--linea);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 26px 40px;
+      }
+      .ademas h3 {
+        font-size: 20px;
+      }
+      .ademas p {
+        color: var(--tinta-2);
+        font-size: 16.5px;
+        margin-top: 6px;
+      }
+
+      /* ---------- Tu agenda es tuya ---------- */
+      .tuya {
+        background: var(--blanco);
+        border-top: 1px solid var(--linea);
+        border-bottom: 1px solid var(--linea);
+      }
+      .tuya-frase {
+        font-family: var(--display);
+        font-weight: 600;
+        font-size: clamp(28px, 3.4vw, 42px);
+        line-height: 1.2;
+        letter-spacing: -0.015em;
+        max-width: 26ch;
+      }
+      .tuya-datos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 22px 40px;
+        margin-top: 40px;
+      }
+      .tuya-datos p {
+        color: var(--tinta-2);
+        font-size: 16.5px;
+      }
+      .tuya-datos b {
+        display: block;
+        font-family: var(--display);
+        font-size: 19px;
+        color: var(--tinta);
+        margin-bottom: 4px;
+      }
+
+      /* ---------- Descargar ---------- */
+      .descargar {
+        position: relative;
+        background: var(--noche);
+        color: var(--noche-tinta);
+        padding-bottom: clamp(200px, 22vw, 300px);
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .descargar::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: clamp(240px, 30vw, 420px);
+        z-index: -1;
+        background: url('../fondos/10-noche-estrellada.jpg') 50% 100% / cover no-repeat;
+        -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 45%);
+        mask-image: linear-gradient(180deg, transparent 0%, #000 45%);
+      }
+      .descargar h2 {
+        color: #fff;
+      }
+      .descargar .intro {
+        color: #b9cbe2;
+      }
+      .opciones {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 18px;
+        margin-top: 40px;
+      }
+      .opcion {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 26px 24px 24px;
+        border-radius: 18px;
+        background: var(--noche-2);
+        border: 1px solid var(--noche-3);
+      }
+      .opcion.tuyo {
+        border: 2px solid var(--verde);
+        padding: 25px 23px 23px;
+      }
+      .opcion.tuyo::before {
+        content: 'Para este ordenador';
+        position: absolute;
+        top: -13px;
+        left: 20px;
+        font-size: 13.5px;
+        font-weight: 800;
+        padding: 2px 10px 3px;
+        border-radius: 8px;
+        background: var(--limon);
+        color: #3d2f00;
+      }
+      .opcion svg.aparato {
+        color: var(--verde);
+      }
+      .opcion h3 {
+        margin-top: 14px;
+        color: #fff;
+        font-size: 24px;
+      }
+      .opcion p {
+        color: #b9cbe2;
+        font-size: 16px;
+        margin-top: 6px;
+      }
+      .opcion .boton {
+        margin-top: auto;
+        align-self: stretch;
+        justify-content: center;
+        font-size: 18px;
+        padding: 14px 18px;
+      }
+      .opcion .peso {
+        margin: 18px 0 14px;
+        font-size: 14.5px;
+        color: #93a9c6;
+      }
+      .que-mac {
+        margin-top: 26px;
+        max-width: 70ch;
+        color: #b9cbe2;
+        font-size: 16.5px;
+      }
+      .que-mac b {
+        color: #fff;
+      }
+      .descargar .ui {
+        background: var(--noche-3);
+        border-color: #2b4c75;
+        color: #fff;
+      }
+
+      /* ---------- Instalar ---------- */
+      .instalar-cols {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 22px;
+        margin-top: 40px;
+      }
+      .instalar-col {
+        background: var(--blanco);
+        border: 1px solid var(--linea);
+        border-radius: 18px;
+        padding: 28px 28px 26px;
+      }
+      .instalar-col.tuyo {
+        border: 2px solid var(--verde-hondo);
+        padding: 27px 27px 25px;
+      }
+      .instalar-col header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .instalar-col header svg {
+        color: var(--verde-hondo);
+      }
+      .pasos {
+        list-style: none;
+        counter-reset: paso;
+        margin: 18px 0 0;
+        padding: 0;
+      }
+      .pasos li {
+        counter-increment: paso;
+        position: relative;
+        padding: 0 0 0 46px;
+        margin-top: 16px;
+        color: var(--tinta-2);
+      }
+      .pasos li::before {
+        content: counter(paso);
+        position: absolute;
+        left: 0;
+        top: -1px;
+        width: 31px;
+        height: 31px;
+        border-radius: 50%;
+        background: var(--verde);
+        color: var(--verde-tinta);
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 17px;
+        line-height: 31px;
+        text-align: center;
+      }
+      .pasos b {
+        color: var(--tinta);
+      }
+      .aviso-firma {
+        margin-top: 22px;
+        padding: 16px 18px;
+        border-radius: 12px;
+        background: #fff7d1;
+        color: #4a3b00;
+        font-size: 16px;
+      }
+      .terminal {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .terminal code {
+        font-family: ui-monospace, 'Cascadia Mono', Menlo, Consolas, monospace;
+        font-size: 14px;
+        background: #eef0f3;
+        border-radius: 8px;
+        padding: 7px 10px;
+        word-break: break-all;
+        color: var(--tinta);
+      }
+      .copiar {
+        font: 700 14px var(--texto);
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: 1px solid #cfd2d9;
+        background: var(--blanco);
+        color: var(--tinta);
+        cursor: pointer;
+      }
+      .copiar:hover {
+        background: var(--papel);
+      }
+
+      /* ---------- Primeros pasos, actualizaciones ---------- */
+      .primeros {
+        background: var(--blanco);
+        border-top: 1px solid var(--linea);
+        border-bottom: 1px solid var(--linea);
+      }
+      .primeros .pasos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 8px 36px;
+        margin-top: 30px;
+      }
+      .primeros .pasos li b {
+        display: block;
+        font-family: var(--display);
+        font-size: 19px;
+        margin-bottom: 4px;
+      }
+      .dos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px 64px;
+      }
+      .dos p {
+        color: var(--tinta-2);
+        margin-top: 14px;
+      }
+
+      /* ---------- Preguntas ---------- */
+      .preguntas {
+        margin-top: 30px;
+        max-width: 820px;
+        border-top: 1px solid var(--linea);
+      }
+      .preguntas details {
+        border-bottom: 1px solid var(--linea);
+      }
+      .preguntas summary {
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 18px 2px;
+        font-family: var(--display);
+        font-weight: 600;
+        font-size: 20px;
+      }
+      .preguntas summary::-webkit-details-marker {
+        display: none;
+      }
+      .preguntas summary::after {
+        content: '+';
+        flex: none;
+        font-size: 26px;
+        line-height: 1;
+        color: var(--verde-hondo);
+        transition: transform 0.2s;
+      }
+      .preguntas details[open] summary::after {
+        transform: rotate(45deg);
+      }
+      .preguntas details p {
+        padding: 0 2px 20px;
+        color: var(--tinta-2);
+        max-width: 66ch;
+      }
+
+      footer {
+        padding: 40px 0 56px;
+        color: var(--tinta-3);
+        font-size: 15px;
+        border-top: 1px solid var(--linea);
+      }
+      footer .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 28px;
+        justify-content: space-between;
+      }
+
+      @media (max-width: 820px) {
+        .fila,
+        .fila.al-reves {
+          grid-template-columns: 1fr;
+        }
+        .fila.al-reves .fila-texto {
+          order: 0;
+        }
+        .cielo-arriba {
+          display: block;
+        }
+        .cielo-nota {
+          display: none;
+        }
+        .cielo-texto {
+          padding-bottom: 120px;
+        }
+        .cielo {
+          min-height: 0;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .cielo-foto {
+          transition: none;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <header>
-        <img src="./icono-pro.png" alt="" width="72" height="72" />
-        <div>
-          <h1>Mia Genda Pro</h1>
-          <div class="ver" id="ver">Para Windows y Mac</div>
-        </div>
-      </header>
-      <p class="lead">Tu agenda personal en tu ordenador: eventos, trabajos al estilo Trello, notas y avisos. Sin cuentas ni contraseñas: todo se guarda en tu ordenador y nadie más lo ve.</p>
+    <a class="skip" href="#descargar">Ir a las descargas</a>
 
-      <div class="downloads">
-        <a class="dl" id="win" href="https://github.com/JuanMaMeRch/mia-genda/releases/latest/download/Instalar-Mia-Genda-Pro.exe">
-          <b>Windows</b>
-          <small>Windows 10 y 11 · unos 110 MB</small>
-          <span class="btn">Descargar para Windows</span>
-        </a>
-        <a class="dl" id="mac-arm" href="https://github.com/JuanMaMeRch/mia-genda/releases/latest/download/Mia-Genda-Pro-Mac-chip-Apple.zip">
-          <b>Mac con chip Apple</b>
-          <small>M1, M2, M3, M4 · macOS 13 o posterior · unos 115 MB</small>
-          <span class="btn">Descargar para Mac (Apple)</span>
-        </a>
-        <a class="dl" id="mac-intel" href="https://github.com/JuanMaMeRch/mia-genda/releases/latest/download/Mia-Genda-Pro-Mac-Intel.zip">
-          <b>Mac con Intel</b>
-          <small>macOS 13 o posterior · unos 120 MB</small>
-          <span class="btn">Descargar para Mac (Intel)</span>
-        </a>
+    <header class="cielo" id="cielo">
+      <img class="cielo-foto" id="cielo-foto" src="../fondos/05-manana.jpg" alt="" width="2168" height="725" fetchpriority="high" />
+      <div class="wrap">
+        <div class="cielo-arriba">
+          <a class="marca" href="./"><img src="./icono-pro.png" alt="" width="44" height="44" />Mia Genda <span>Pro</span></a>
+          <p class="cielo-nota" id="cielo-nota">Este es el cielo de esta hora. Mia Genda lo pone en tu portada cada día, con el sol y la luna en su sitio.</p>
+        </div>
+        <div class="cielo-texto">
+          <h1>Tu agenda personal, en tu ordenador.</h1>
+          <p class="entrada">Citas, trabajos en tableros, notas de colores y avisos para que no se te pase nada. Sin cuentas ni contraseñas: todo se guarda en tu ordenador y solo lo ves tú.</p>
+          <div class="accion">
+            <a class="boton" id="principal" href="#descargar">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10.5 12 15.5l5-5M5 20h14" /></svg>
+              <span id="principal-texto">Elegir la descarga</span>
+            </a>
+            <p class="accion-dato"><span id="accion-dato">Para Windows 10 y 11, y para Mac con macOS 13 o posterior.</span> <a class="otras" id="otras" href="#descargar">Ver todas las versiones</a></p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap pantalla">
+        <img src="./capturas/hoy.webp" alt="La pantalla Hoy de Mia Genda Pro: arriba el cielo de la mañana sobre unas montañas nevadas, con la hora y la próxima cita; debajo, el día, las tareas pendientes y una línea para apuntar algo." width="1600" height="1000" />
+        <p class="pantalla-pie">La pantalla Hoy: lo que te toca ahora, lo que viene después y lo que tienes pendiente.</p>
       </div>
 
-      <img class="shot" src="./captura.jpg" alt="Mia Genda Pro: la pantalla Hoy, con el cielo de la hora real sobre unas montañas nevadas, tus citas y tus tareas" width="1200" height="759" loading="lazy" />
+      <section class="seccion" aria-labelledby="t-que">
+        <div class="wrap">
+          <h2 id="t-que">Todo tu día en un solo sitio</h2>
+          <p class="intro">Mia Genda Pro junta lo que normalmente tienes repartido entre el calendario, la libreta y los pósits: tus citas, tus trabajos y tus notas sueltas. Al abrirla ves tu día de un vistazo.</p>
 
-      <ul class="facts">
-        <li>Calendario de día, semana y mes</li>
-        <li>Tableros de trabajos con fondos</li>
-        <li>Notas de colores con aviso</li>
-        <li>Avisos antes de cada cita</li>
-        <li>La carpeta de cada trabajo, a un clic</li>
-        <li>Tus calendarios de Google, Outlook o iCloud</li>
-        <li>Modo día y modo noche</li>
-        <li>Copia de seguridad diaria</li>
-        <li>Te avisa cuando hay versión nueva</li>
-      </ul>
+          <div class="fila">
+            <div class="fila-texto">
+              <h3>Apúntalo como lo dirías</h3>
+              <p>Escribe «Dentista el jueves a las 17:30» y Mia Genda entiende el día y la hora. Tú solo eliges si es una tarea, una cita o una nota con aviso.</p>
+              <ul>
+                <li>Entiende «mañana», «el lunes», «a las diez y media» o «dentro de una hora».</li>
+                <li>Con <kbd>Ctrl</kbd> + <kbd>K</kbd> (en Mac, <kbd>Cmd</kbd> + <kbd>K</kbd>) se abre desde cualquier pantalla.</li>
+                <li>También puedes dictarlo con el dictado de tu ordenador: <kbd>Windows</kbd> + <kbd>H</kbd> en Windows, o dos veces la tecla <kbd>Fn</kbd> en Mac.</li>
+              </ul>
+            </div>
+            <img src="./capturas/anadir.webp" alt="La ventana Añadir con la frase «Dentista el jueves a las 17:30» y tres opciones: crear tarea, crear evento o nota con aviso, todas para el jueves 26 de noviembre a las 17:30." width="1200" height="600" loading="lazy" />
+          </div>
 
-      <h2>Cómo instalarla</h2>
-      <details id="how-win">
-        <summary>En Windows</summary>
-        <ol>
-          <li>Abre el archivo descargado, «Instalar-Mia-Genda-Pro.exe».</li>
-          <li>Si sale una ventana azul «Windows protegió su PC», pulsa «Más información» y luego «Ejecutar de todas formas». Sale porque el programa no lleva una firma de pago de Microsoft.</li>
-          <li>Pulsa «Instalar». En unos segundos se abre sola y queda en el escritorio y en el menú Inicio.</li>
-        </ol>
-      </details>
-      <details id="how-mac">
-        <summary>En Mac</summary>
-        <ol>
-          <li>Abre el .zip descargado: aparece «Mia Genda Pro». Arrástrala a la carpeta Aplicaciones.</li>
-          <li>Ábrela. La primera vez el Mac avisa de que no puede comprobarla, porque no lleva la firma de pago de Apple: pulsa «Aceptar».</li>
-          <li>Ve a Ajustes del Sistema &gt; Privacidad y seguridad, baja hasta el final y pulsa «Abrir igualmente». Solo hay que hacerlo la primera vez.</li>
-          <li>Si dice que la app «está dañada», abre la app Terminal, pega esta línea y pulsa Intro: <code>xattr -cr "/Applications/Mia Genda Pro.app"</code></li>
-        </ol>
-        <p><b>¿Qué Mac tengo?</b> Menú Apple &gt; Acerca de este Mac. Si pone «Chip Apple M…», descarga la de chip Apple; si pone «Procesador Intel», la de Intel.</p>
-      </details>
-      <details>
-        <summary>Actualizar a una versión nueva</summary>
-        <ol>
-          <li>Mia Genda Pro te avisa sola cuando hay una versión nueva.</li>
-          <li>En Windows, pulsa «Actualizar ahora»: se descarga y se instala sola, y vuelve a abrirse.</li>
-          <li>En Mac, pulsa «Descargar la versión nueva» y arrastra la app nueva a Aplicaciones, encima de la antigua.</li>
-          <li>Tu agenda se conserva siempre.</li>
-        </ol>
-      </details>
+          <div class="fila al-reves">
+            <div class="fila-texto">
+              <h3>Tu semana, con sitio para trabajar</h3>
+              <p>Mira tu agenda por días, de tres en tres, por semanas, por meses o en lista. Las tareas que aún no tienen hora esperan a un lado: arrástralas a un hueco libre y quedan reservadas en tu calendario.</p>
+              <ul>
+                <li>Bloques de tiempo que se repiten, como «Trabajo concentrado» de 9 a 13.</li>
+                <li>El planificador coloca tus pendientes en los huecos libres y te avisa si algo choca.</li>
+                <li>Un color para cada calendario: personal, trabajo, familia…</li>
+              </ul>
+            </div>
+            <img src="./capturas/calendario.webp" alt="El calendario en vista de semana, con bloques de trabajo concentrado, una reunión y una comida familiar, y a la izquierda la lista de tareas sin hora para arrastrar." width="1500" height="1158" loading="lazy" />
+          </div>
 
-      <footer>Mia Genda Pro · Tu agenda se guarda solo en tu ordenador.</footer>
+          <div class="fila">
+            <div class="fila-texto">
+              <h3>Tus trabajos, en tableros</h3>
+              <p>Columnas como «Por hacer», «En curso» y «Hecho», con tarjetas que arrastras de una a otra, igual que en Trello. Cada tarjeta guarda lo que necesitas para ese trabajo.</p>
+              <ul>
+                <li>Fecha límite, prioridad, etiquetas, pasos y fotos.</li>
+                <li>La carpeta del trabajo en tu ordenador, que se abre con un clic.</li>
+                <li>Un fondo para cada tablero y para cada columna: madera, mármol, lino y muchos más, o tus propias fotos.</li>
+              </ul>
+            </div>
+            <img src="./capturas/tablero.webp" alt="Un tablero de trabajos sobre fondo de madera de nogal, con las columnas Por hacer, En curso, En revisión y Hecho; la columna En curso lleva de fondo un rincón japonés con bambú y un farol." width="1500" height="1158" loading="lazy" />
+          </div>
+
+          <div class="fila al-reves">
+            <div class="fila-texto">
+              <h3>Notas de colores</h3>
+              <p>Para lo que quieres apuntar sin pensar dónde va: una idea, la lista de la compra, un teléfono. Escríbela o díctala y listo.</p>
+              <ul>
+                <li>Fíjala y la verás también en Hoy.</li>
+                <li>Ponle un aviso para que te la recuerde a una hora.</li>
+                <li>Si acaba siendo un trabajo, conviértela en tarea.</li>
+              </ul>
+            </div>
+            <img src="./capturas/notas.webp" alt="La pantalla de notas: una casilla para escribir una nota rápida y notas de colores: ideas sueltas en amarillo, planes para el finde en lila, llamar al fontanero en azul, un regalo en rosa y la lista de la compra en verde." width="1500" height="890" loading="lazy" />
+          </div>
+
+          <div class="fila">
+            <div class="fila-texto">
+              <h3>De día o de noche</h3>
+              <p>Un botón pasa toda la agenda a modo noche, en negro o en azul noche. Si lo prefieres, cambia sola según la hora o como tenga puesto tu ordenador.</p>
+            </div>
+            <img src="./capturas/noche.webp" alt="El mismo tablero en modo noche, con el menú lateral y las columnas en negro sobre el fondo de madera." width="1600" height="1000" loading="lazy" />
+          </div>
+
+          <div class="ademas">
+            <div>
+              <h3>Avisos a tiempo</h3>
+              <p>Te avisa antes de cada cita, tarea o nota, también con la ventana cerrada.</p>
+            </div>
+            <div>
+              <h3>Tus otros calendarios</h3>
+              <p>Ve en la misma agenda tus calendarios de Google, Outlook o iCloud.</p>
+            </div>
+            <div>
+              <h3>Copia de cada día</h3>
+              <p>Guarda sola una copia diaria de tu agenda en la carpeta Documentos.</p>
+            </div>
+            <div>
+              <h3>Lista al encender</h3>
+              <p>Si quieres, se abre sola al encender el ordenador, sin estorbar.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion tuya" aria-labelledby="t-tuya">
+        <div class="wrap">
+          <h2 id="t-tuya" class="tuya-frase">Tu agenda es tuya: se queda en tu ordenador y nadie más la ve.</h2>
+          <div class="tuya-datos">
+            <p><b>Sin cuentas</b>No hay que registrarse ni recordar ninguna contraseña. La abres y empiezas.</p>
+            <p><b>Sin nube</b>Tus citas, trabajos y notas no salen de tu ordenador.</p>
+            <p><b>Casi sin internet</b>Solo se conecta para leer los calendarios que tú enlaces y para ver si hay una versión nueva.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion descargar" id="descargar" aria-labelledby="t-descargar">
+        <div class="wrap">
+          <h2 id="t-descargar">Descargar Mia Genda Pro</h2>
+          <p class="intro" id="version-texto">Elige la de tu ordenador. Las tres son la misma agenda.</p>
+
+          <div class="opciones">
+            <div class="opcion" id="op-win">
+              <svg class="aparato" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="38" height="25" rx="3" /><path d="M24 33v7M16 41h16" /></svg>
+              <h3>Windows</h3>
+              <p>Para Windows 10 y Windows 11.</p>
+              <p class="peso" data-peso="windows">Instalador de unos 113 MB.</p>
+              <a class="boton" href="https://github.com/JuanMaMeRch/mia-genda/releases/latest/download/Instalar-Mia-Genda-Pro.exe">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10.5 12 15.5l5-5M5 20h14" /></svg>
+                Descargar para Windows
+              </a>
+            </div>
+            <div class="opcion" id="op-apple">
+              <svg class="aparato" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="10" width="28" height="19" rx="2.5" /><path d="M4 34h40l-3 5H7z" /></svg>
+              <h3>Mac con chip Apple</h3>
+              <p>M1, M2, M3, M4 o posterior, con macOS 13 Ventura o más nuevo.</p>
+              <p class="peso" data-peso="mac_arm64">Archivo .zip de unos 120 MB.</p>
+              <a class="boton" href="https://github.com/JuanMaMeRch/mia-genda/releases/latest/download/Mia-Genda-Pro-Mac-chip-Apple.zip" aria-label="Descargar para Mac con chip Apple">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10.5 12 15.5l5-5M5 20h14" /></svg>
+                Descargar para Mac
+              </a>
+            </div>
+            <div class="opcion" id="op-intel">
+              <svg class="aparato" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="10" width="28" height="19" rx="2.5" /><path d="M4 34h40l-3 5H7z" /></svg>
+              <h3>Mac con Intel</h3>
+              <p>Mac con procesador Intel y macOS 13 Ventura o más nuevo.</p>
+              <p class="peso" data-peso="mac_x64">Archivo .zip de unos 124 MB.</p>
+              <a class="boton" href="https://github.com/JuanMaMeRch/mia-genda/releases/latest/download/Mia-Genda-Pro-Mac-Intel.zip" aria-label="Descargar para Mac con Intel">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10.5 12 15.5l5-5M5 20h14" /></svg>
+                Descargar para Mac
+              </a>
+            </div>
+          </div>
+          <p class="que-mac"><b>¿Qué Mac tengo?</b> Abre el menú de la manzana, arriba a la izquierda, y pulsa <span class="ui">Acerca de este Mac</span>. Si pone «Chip» seguido de Apple M1, M2…, es un Mac con chip Apple. Si pone «Procesador» y luego Intel, es un Mac con Intel.</p>
+        </div>
+      </section>
+
+      <section class="seccion" id="instalar" aria-labelledby="t-instalar">
+        <div class="wrap">
+          <h2 id="t-instalar">Cómo instalarla</h2>
+          <p class="intro">Se tarda un par de minutos. La primera vez, tu ordenador te dirá que no reconoce el programa: es normal, porque Mia Genda Pro no lleva la firma de pago de Microsoft ni la de Apple. Aquí tienes qué pulsar.</p>
+
+          <div class="instalar-cols">
+            <div class="instalar-col" id="inst-win">
+              <header>
+                <svg width="34" height="34" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="38" height="25" rx="3" /><path d="M24 33v7M16 41h16" /></svg>
+                <h3>En Windows</h3>
+              </header>
+              <ol class="pasos">
+                <li>Abre el archivo que has descargado, <b>Instalar-Mia-Genda-Pro.exe</b>. Lo encontrarás en la carpeta Descargas.</li>
+                <li>Si aparece la ventana azul «Windows protegió su PC», pulsa <span class="ui">Más información</span> y después <span class="ui">Ejecutar de todas formas</span>.</li>
+                <li>Pulsa <span class="ui">Instalar</span>. No hace falta ser administrador.</li>
+                <li>Mia Genda Pro se abre sola. A partir de ahora la tienes en el escritorio y en el menú Inicio.</li>
+              </ol>
+            </div>
+            <div class="instalar-col" id="inst-mac">
+              <header>
+                <svg width="34" height="34" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="10" width="28" height="19" rx="2.5" /><path d="M4 34h40l-3 5H7z" /></svg>
+                <h3>En Mac</h3>
+              </header>
+              <ol class="pasos">
+                <li>Abre el archivo .zip que has descargado con un doble clic. Aparece la app <b>Mia Genda Pro</b>.</li>
+                <li>Arrástrala a la carpeta <b>Aplicaciones</b>.</li>
+                <li>Ábrela. El Mac avisa de que no puede comprobarla: pulsa <span class="ui">Aceptar</span>.</li>
+                <li>Ve a <b>Ajustes del Sistema</b>, entra en <b>Privacidad y seguridad</b>, baja hasta el final y pulsa <span class="ui">Abrir igualmente</span>. Solo hay que hacerlo la primera vez.</li>
+              </ol>
+              <div class="aviso-firma">
+                <b>Si el Mac dice que la app «está dañada»</b>, abre la app Terminal, pega esta línea y pulsa Intro. Después ábrela otra vez.
+                <div class="terminal">
+                  <code id="orden-mac">xattr -cr "/Applications/Mia Genda Pro.app"</code>
+                  <button class="copiar" type="button" data-copiar="orden-mac">Copiar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion primeros" aria-labelledby="t-primeros">
+        <div class="wrap">
+          <h2 id="t-primeros">Tus primeros minutos</h2>
+          <ol class="pasos">
+            <li><b>Dile tu nombre y tu ciudad</b>La ciudad sirve para que el cielo de la portada tenga el amanecer, el atardecer y la luna de tu cielo.</li>
+            <li><b>Mira los ejemplos y bórralos</b>Te deja unas citas, un tablero y unas notas de muestra. Cuando quieras empezar con lo tuyo, pulsa <span class="ui">Borrar los ejemplos</span>.</li>
+            <li><b>Apunta lo primero</b>Pulsa <span class="ui">Añadir</span> y escríbelo como lo dirías: «Llamar a Ana mañana a las 10:30».</li>
+            <li><b>Prueba los avisos</b>En <span class="ui">Este ordenador</span> pulsa <span class="ui">Probar un aviso</span>. Ahí mismo puedes hacer que se abra al encender el ordenador.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="seccion" aria-labelledby="t-al-dia">
+        <div class="wrap dos">
+          <div>
+            <h2 id="t-al-dia">Siempre al día</h2>
+            <p>Cuando hay una versión nueva, Mia Genda Pro te avisa. En Windows pulsas <span class="ui">Actualizar ahora</span> y ella sola se descarga, se instala y vuelve a abrirse. En Mac pulsas <span class="ui">Descargar la versión nueva</span> y arrastras la app a Aplicaciones, encima de la antigua.</p>
+            <p>Tu agenda no se toca al actualizar.</p>
+          </div>
+          <div>
+            <h2>Dónde está tu agenda</h2>
+            <p>Dentro del programa, en tu ordenador. Además, cada día deja una copia en la carpeta <b>Documentos › Mia Genda Pro › Copias</b> y guarda las de los últimos 30 días.</p>
+            <p>Si desinstalas el programa, tu agenda y tus copias se quedan en el ordenador.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion" aria-labelledby="t-preguntas" style="padding-top: 0">
+        <div class="wrap">
+          <h2 id="t-preguntas">Preguntas frecuentes</h2>
+          <div class="preguntas">
+            <details>
+              <summary>¿Necesito internet para usarla?</summary>
+              <p>No. Mia Genda Pro funciona sin conexión. Solo usa internet para leer los calendarios de Google, Outlook o iCloud que enlaces y para mirar si hay una versión nueva.</p>
+            </details>
+            <details>
+              <summary>¿Me avisa aunque cierre la ventana?</summary>
+              <p>Sí. Al cerrar la ventana, Mia Genda Pro sigue en marcha para avisarte: en Windows queda junto al reloj, abajo a la derecha, y en Mac, en el Dock. Para cerrarla del todo, usa <span class="ui">Salir</span>. En Mac, la primera vez te preguntará si dejas que te mande avisos: dile que sí.</p>
+            </details>
+            <details>
+              <summary>¿Cómo veo mis calendarios de Google, Outlook o iCloud?</summary>
+              <p>En <span class="ui">Este ordenador</span>, en el apartado de calendarios, pega el enlace privado del calendario (el que termina en .ics). Sus citas aparecen en tu agenda con su color. Se ven aquí, pero se cambian en Google, Outlook o iCloud.</p>
+            </details>
+            <details>
+              <summary>¿Funciona en el móvil o en otro ordenador a la vez?</summary>
+              <p>Mia Genda Pro es para ordenadores con Windows o Mac, y cada ordenador tiene su propia agenda. No se sincroniza entre aparatos: así nada sale de tu ordenador.</p>
+            </details>
+            <details>
+              <summary>¿Por qué Windows o el Mac dicen que no reconocen el programa?</summary>
+              <p>Porque no lleva la firma de pago de Microsoft ni la de Apple. Ese aviso sale con cualquier programa sin esa firma. Los pasos de <a href="#instalar">Cómo instalarla</a> te dicen qué pulsar; solo pasa la primera vez.</p>
+            </details>
+            <details>
+              <summary>¿Cómo dicto en vez de escribir?</summary>
+              <p>Con el dictado de tu ordenador. Pon el cursor donde quieras escribir y pulsa <kbd>Windows</kbd> + <kbd>H</kbd> en Windows. En Mac, pulsa dos veces la tecla <kbd>Fn</kbd> (o la del micrófono). El botón del micrófono de Mia Genda te lo recuerda.</p>
+            </details>
+            <details>
+              <summary>¿Cómo la desinstalo?</summary>
+              <p>En Windows: Configuración › Aplicaciones, busca Mia Genda Pro y pulsa <span class="ui">Desinstalar</span>. En Mac: arrastra la app de Aplicaciones a la Papelera. En los dos casos tu agenda y tus copias se quedan en el ordenador.</p>
+            </details>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer>
+      <div class="wrap">
+        <span id="pie-version">Mia Genda Pro para Windows y Mac.</span>
+        <a href="https://github.com/JuanMaMeRch/mia-genda/releases">Todas las versiones</a>
+      </div>
+    </footer>
+
     <script>
-      // Se destaca la descarga de este ordenador y se pone la versión.
       (function () {
+        // ---------- El cielo de esta hora: la misma foto que pondría la app ----------
+        var FOTOS = ['01-medianoche', '02-noche-profunda', '03-antes-del-amanecer', '04-amanecer', '05-manana', '06-mediodia', '07-tarde', '08-atardecer', '09-hora-azul', '10-noche-estrellada'];
+        var RAD = Math.PI / 180;
+        var LAT = 40.42;
+        var LON = -3.7;
+        function aJuliano(d) {
+          return d.getTime() / 86400000 + 2440587.5;
+        }
+        function deJuliano(j) {
+          return new Date((j - 2440587.5) * 86400000);
+        }
+        function sol(fecha) {
+          var mediodia = new Date(fecha);
+          mediodia.setHours(12, 0, 0, 0);
+          var n = Math.round(aJuliano(mediodia) - 2451545.0 + 0.0008);
+          var j = n - LON / 360;
+          var M = (357.5291 + 0.98560028 * j) % 360;
+          var C = 1.9148 * Math.sin(M * RAD) + 0.02 * Math.sin(2 * M * RAD) + 0.0003 * Math.sin(3 * M * RAD);
+          var l = (M + C + 180 + 102.9372) % 360;
+          var tr = 2451545.0 + j + 0.0053 * Math.sin(M * RAD) - 0.0069 * Math.sin(2 * l * RAD);
+          var sd = Math.sin(l * RAD) * Math.sin(23.44 * RAD);
+          var cd = Math.cos(Math.asin(sd));
+          var cw = (Math.sin(-0.833 * RAD) - Math.sin(LAT * RAD) * sd) / (Math.cos(LAT * RAD) * cd);
+          var w = Math.acos(Math.max(-1, Math.min(1, cw))) / RAD;
+          return { sale: deJuliano(tr - w / 360), pone: deJuliano(tr + w / 360) };
+        }
+        function minutos(d) {
+          return d.getHours() * 60 + d.getMinutes();
+        }
+        function faseAhora(ahora) {
+          var s = sol(ahora);
+          var R = minutos(s.sale);
+          var S = minutos(s.pone);
+          var D = S - R;
+          var t = [0, R - 150, R - 60, R - 5, R + 90, R + 0.42 * D, R + 0.68 * D, S - 50, S + 25, S + 90];
+          if (!(D > 240 && D < 1200) || R < 120 || S > 1380) t = [0, 240, 360, 450, 600, 780, 990, 1110, 1200, 1320];
+          for (var i = 1; i < t.length; i++) t[i] = Math.max(t[i], t[i - 1] + 30);
+          var m = minutos(ahora);
+          var f = 0;
+          for (var k = 0; k < t.length; k++) if (t[k] <= m) f = k;
+          return f;
+        }
+        var foto = document.getElementById('cielo-foto');
+        var lista = function () {
+          foto.classList.add('lista');
+        };
+        var cual = FOTOS[faseAhora(new Date())];
+        if (foto.getAttribute('src').indexOf(cual) === -1) foto.src = '../fondos/' + cual + '.jpg';
+        if (foto.complete && foto.naturalWidth) lista();
+        else foto.addEventListener('load', lista);
+        foto.addEventListener('error', lista);
+
+        // ---------- Qué ordenador es: se destaca su descarga ----------
+        var BASE = 'https://github.com/JuanMaMeRch/mia-genda/releases/latest/download/';
+        var DESCARGAS = {
+          windows: { url: BASE + 'Instalar-Mia-Genda-Pro.exe', texto: 'Descargar para Windows', caja: 'op-win', pasos: 'inst-win', clave: 'windows' },
+          apple: { url: BASE + 'Mia-Genda-Pro-Mac-chip-Apple.zip', texto: 'Descargar para Mac', caja: 'op-apple', pasos: 'inst-mac', clave: 'mac_arm64' },
+          intel: { url: BASE + 'Mia-Genda-Pro-Mac-Intel.zip', texto: 'Descargar para Mac con Intel', caja: 'op-intel', pasos: 'inst-mac', clave: 'mac_x64' },
+        };
         var ua = navigator.userAgent || '';
-        var mac = /Macintosh|Mac OS X/.test(ua) && !/iPhone|iPad/.test(ua);
-        var win = /Windows/.test(ua);
-        if (win) document.getElementById('win').classList.add('mine');
-        if (mac) {
-          var arm = false;
+        var esMovil = /iPhone|iPad|iPod|Android/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+        var esWin = !esMovil && /Windows/.test(ua);
+        var esMac = !esMovil && /Macintosh|Mac OS X/.test(ua);
+        var elegido = null;
+        var version = null;
+
+        function megas(bytes) {
+          return Math.round(bytes / 1e6) + ' MB';
+        }
+        function pintar() {
+          ['op-win', 'op-apple', 'op-intel', 'inst-win', 'inst-mac'].forEach(function (id) {
+            document.getElementById(id).classList.remove('tuyo');
+          });
+          var dato = document.getElementById('accion-dato');
+          var otras = document.getElementById('otras');
+          var boton = document.getElementById('principal');
+          var texto = document.getElementById('principal-texto');
+          if (!elegido) {
+            if (esMovil) dato.textContent = 'Mia Genda Pro se instala en ordenadores con Windows o Mac. Abre esta página en tu ordenador para descargarla.';
+            return;
+          }
+          var d = DESCARGAS[elegido];
+          document.getElementById(d.caja).classList.add('tuyo');
+          document.getElementById(d.pasos).classList.add('tuyo');
+          boton.href = d.url;
+          texto.textContent = d.texto;
+          var v = version && version[d.clave];
+          var peso = v && v.bytes ? ', ' + megas(v.bytes) : '';
+          var num = version && version.version ? 'Versión ' + version.version : 'Última versión';
+          if (elegido === 'windows') {
+            dato.textContent = num + ' para Windows 10 y 11' + peso + '.';
+            otras.textContent = '¿Tienes un Mac? Ver las otras versiones';
+          } else {
+            dato.textContent = num + ' para Mac ' + (elegido === 'apple' ? 'con chip Apple' : 'con Intel') + peso + '.';
+            otras.textContent = elegido === 'apple' ? '¿Tu Mac tiene procesador Intel? Ver las otras versiones' : '¿Tu Mac tiene chip Apple? Ver las otras versiones';
+          }
+        }
+
+        if (esWin) elegido = 'windows';
+        else if (esMac) {
+          // Casi todos los Mac desde 2020 llevan chip Apple; se intenta confirmarlo.
+          elegido = 'apple';
           try {
             var gl = document.createElement('canvas').getContext('webgl');
-            var dbg = gl && gl.getExtension('WEBGL_debug_renderer_info');
-            arm = !!(dbg && /Apple M\d|Apple GPU/i.test(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)));
+            var info = gl && gl.getExtension('WEBGL_debug_renderer_info');
+            var tarjeta = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : '';
+            if (/Intel|AMD|Radeon|NVIDIA/i.test(tarjeta)) elegido = 'intel';
           } catch (e) {}
-          document.getElementById(arm ? 'mac-arm' : 'mac-intel').classList.add('mine');
-          document.getElementById('how-mac').open = true;
-        } else if (win) document.getElementById('how-win').open = true;
+          if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+            navigator.userAgentData
+              .getHighEntropyValues(['architecture'])
+              .then(function (r) {
+                if (r.architecture === 'arm') elegido = 'apple';
+                else if (r.architecture === 'x86') elegido = 'intel';
+                pintar();
+              })
+              .catch(function () {});
+          }
+        }
+        pintar();
+
+        // ---------- Versión y tamaños, del mismo archivo que usa la app para avisar ----------
         fetch('./version.json', { cache: 'no-store' })
           .then(function (r) {
             return r.json();
           })
           .then(function (v) {
-            if (v && v.version) document.getElementById('ver').textContent = 'Versión ' + v.version + ' · Para Windows y Mac';
+            if (!v || !v.version) return;
+            version = v;
+            var fecha = '';
+            if (v.fecha) {
+              try {
+                fecha = new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(v.fecha + 'T12:00:00'));
+              } catch (e) {}
+            }
+            document.getElementById('version-texto').textContent = 'Versión ' + v.version + (fecha ? ', del ' + fecha : '') + '. Elige la de tu ordenador: las tres son la misma agenda.';
+            document.getElementById('pie-version').textContent = 'Mia Genda Pro ' + v.version + ' para Windows y Mac.';
+            var nombres = { windows: 'Instalador de ', mac_arm64: 'Archivo .zip de ', mac_x64: 'Archivo .zip de ' };
+            Array.prototype.forEach.call(document.querySelectorAll('[data-peso]'), function (el) {
+              var k = el.getAttribute('data-peso');
+              if (v[k] && v[k].bytes) el.textContent = nombres[k] + megas(v[k].bytes) + '.';
+            });
+            pintar();
           })
           .catch(function () {});
+
+        // ---------- Botón «Copiar» ----------
+        Array.prototype.forEach.call(document.querySelectorAll('[data-copiar]'), function (b) {
+          b.addEventListener('click', function () {
+            var texto = document.getElementById(b.getAttribute('data-copiar')).textContent;
+            var hecho = function () {
+              b.textContent = 'Copiado';
+              setTimeout(function () {
+                b.textContent = 'Copiar';
+              }, 2000);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(texto).then(hecho, function () {});
+          });
+        });
       })();
     </script>
   </body>
